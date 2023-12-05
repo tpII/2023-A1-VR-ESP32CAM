@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>VR Image Viewer</title>
+        <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <body>
+        <div class="image-container">
+            <!-- Adjust the src attribute to your image paths -->
+            <!-- <div class="vr-image-wrapper"> -->
+              <img class="" src="http://192.168.137.76:81/stream" alt="Image 1" id="leftImage">
+
+            <!-- </div> -->
+            <!-- <div class="vr-image-wrapper"> -->
+              <img class="" src="http://192.168.137.33:81/stream" alt="Image 2" id="rightImage">
+            <!-- </div> -->
+        </div>
+
+        <!-- Your full screen button and script here -->
+    <button id="fullscreenButton">Go Fullscreen</button>
+
+</body>
+
+
+<script>
+    function toggleFullScreen() {
+      let fsButton = document.getElementById('fullscreenButton');
+      if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+          fsButton.style.display = 'none'; // Hide the button when full screen
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+          fsButton.style.display = 'block'; // Show the button when not full screen
+        }
+      }
+    }
+
+    // Event listener to detect when exiting full screen
+    document.addEventListener('fullscreenchange', (event) => {
+      let fsButton = document.getElementById('fullscreenButton');
+      if (!document.fullscreenElement) {
+          fsButton.style.display = 'block'; // Show the button when not full screen
+      }
+    });
+
+    document.getElementById('fullscreenButton').addEventListener('click', toggleFullScreen, false);
+  </script>
+
+</html>
